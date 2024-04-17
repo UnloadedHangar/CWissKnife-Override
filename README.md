@@ -11,6 +11,8 @@ This mod includes:
 * Infinite camera recordings
 * God mode (No damage) -- you can still die from going out of bounds or depleting oxygen
 
+> WARNING: This mod only works on friend only servers, host only. This behavior is **intended**.
+
 Project repository: [https://github.com/FlawTECH/CWissKnife](https://github.com/FlawTECH/CWissKnife)
 
 ![Menu screenshot](https://github.com/FlawTECH/CWissKnife/raw/main/Screenshot.png)
