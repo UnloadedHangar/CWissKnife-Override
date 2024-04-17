@@ -48,13 +48,20 @@ public class SpeedPatch {
                 yield return new CodeInstruction(OpCodes.Ldsfld, typeof(Plugin).GetField("configToggleSpeedMultiplier", BindingFlags.Static | BindingFlags.Public));
                 // -> callvirt  bool BepInEx.Configuration.ConfigEntry<bool>::get_Value()
                 yield return new CodeInstruction(OpCodes.Callvirt, typeof(ConfigEntry<bool>).GetProperty("Value").GetGetMethod());
-                // -> brfalse.s  <IL_XXXXX>
+                // -> brfalse.s <IL_XXXXX>
                 yield return new CodeInstruction(OpCodes.Brfalse_S, toOriginalSpeedjumpLabel);
                 // Player is host check
-                // -> callvirt static bool Photon.Pun.PhotonNetwork::get_IsMasterClient()
+                // -> call      static bool Photon.Pun.PhotonNetwork::get_IsMasterClient()
                 yield return new CodeInstruction(OpCodes.Call, typeof(PhotonNetwork).GetProperty("IsMasterClient", BindingFlags.Static | BindingFlags.Public).GetGetMethod());
-                // -> brfalse.s  <IL_XXXXX>
+                // -> brfalse.s <IL_XXXXX>
                 yield return new CodeInstruction(OpCodes.Brfalse_S, toOriginalSpeedjumpLabel);
+                // Player is in random lobby check
+                // -> call      static SteamLobbyHandler MainMenuHandler::get_SteamLobbyHandler()
+                yield return new CodeInstruction(OpCodes.Call, typeof(MainMenuHandler).GetProperty("SteamLobbyHandler", BindingFlags.Static | BindingFlags.Public).GetGetMethod());
+                // -> callvirt  bool SteamLobbyHandler::IsPlayingWithRandoms()
+                yield return new CodeInstruction(OpCodes.Callvirt, typeof(SteamLobbyHandler).GetMethod("IsPlayingWithRandoms", BindingFlags.Public | BindingFlags.Instance));
+                // -> brtrue.s  <IL_XXXXX>
+                yield return new CodeInstruction(OpCodes.Brtrue_S, toOriginalSpeedjumpLabel);
                 // --------------
                 // DEBUG
                 // --------------

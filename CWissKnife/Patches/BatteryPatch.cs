@@ -29,7 +29,7 @@ public class BatteryPatch {
 
     [HarmonyPrefix]
     static void Prefix(object __instance) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return;
         }
 

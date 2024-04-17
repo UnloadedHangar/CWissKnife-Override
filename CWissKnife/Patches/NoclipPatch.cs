@@ -14,7 +14,7 @@ public class NoClipPatch {
     private static bool crouchPressed = false;
     private static BodypartType bodypart;
     static void Prefix(PlayerRagdoll ___ragdoll, Player ___player) {
-        if (!Plugin.configToggleNoclip.Value || !PhotonNetwork.IsMasterClient) {
+        if (!Plugin.configToggleNoclip.Value || !PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             if (!wereCollisionsFixed) {
                 foreach (Collider disabledCollider in disabledColliders) {
                     if (disabledCollider != null) {
@@ -50,7 +50,7 @@ public class NoClipPatch {
     }
 
     static void Postfix(PlayerRagdoll ___ragdoll, Player ___player) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return;
         }
 
@@ -74,7 +74,7 @@ public class NoClipPatch {
 [HarmonyPatch(typeof(PlayerController), "Gravity")]
 public class NoClipPatch2 {
     static bool Prefix(Player ___player) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return true;
         }
 
@@ -87,7 +87,7 @@ public class NoClipPatch2 {
 [HarmonyPatch(typeof(PlayerController), "ConstantGravity")]
 public class NoClipPatch3 {
     static bool Prefix(Player ___player) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return true;
         }
 
@@ -100,7 +100,7 @@ public class NoClipPatch3 {
 [HarmonyPatch(typeof(PlayerController), "MovementStateChanges")]
 public class NoClipPatch4 {
     static void Postfix(Player ___player) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return;
         }
 
@@ -113,7 +113,7 @@ public class NoClipPatch4 {
 [HarmonyPatch(typeof(PlayerController), "TryJump")]
 public class NoClipPatch5 {
     static bool Prefix(Player ___player) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return true;
         }
 
@@ -127,7 +127,7 @@ public class NoClipPatch5 {
 [HarmonyPatch(typeof(PlayerRagdoll), "BodyChanged")]
 public class NoClipPatch6 {
     static bool Prefix(Player ___player, List<Rigidbody> ___rigList) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return true;
         }
 

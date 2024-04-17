@@ -19,6 +19,7 @@ namespace CWissKnife
         public static ConfigEntry<bool> configToggleSpeedMultiplier;
         public static ConfigEntry<float> configSpeedMultiplier;
         public static ConfigEntry<bool> configToggleNoclip;
+        public static bool isRandomLobby = false;
         private void Awake()
         {
             // Plugin startup logic

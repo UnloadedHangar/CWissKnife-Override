@@ -5,7 +5,7 @@ using Photon.Pun;
 [HarmonyPatch(typeof(VideoCamera), "Update")]
 public class CameraPatch {
     static void Prefix(VideoInfoEntry ___m_recorderInfoEntry) {
-        if (!PhotonNetwork.IsMasterClient) {
+        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
             return;
         }
         
