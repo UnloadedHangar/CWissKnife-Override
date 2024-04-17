@@ -1,6 +1,6 @@
 # What is this ?
 
-CWissKnife is a so called "cheat" menu for the game Content Warning to have a better understanding of the game's mechanics or simply to play around. Don't use in public lobbies and ruin the fun for others.
+CWissKnife is a multi-purpose mod menu for the game Content Warning, intended to give a better understanding of the game's mechanics (such as for speedrunners) or simply to play around. Don't use in public lobbies and ruin the fun for others (it's disabled anyways).
 
 This mod includes:
 * Noclip
