@@ -1,9 +1,14 @@
 using HarmonyLib;
 using CWissKnife;
+using Photon.Pun;
 
 [HarmonyPatch(typeof(VideoCamera), "Update")]
 public class CameraPatch {
     static void Prefix(VideoInfoEntry ___m_recorderInfoEntry) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return;
+        }
+        
         if (!Plugin.configToggleInfiniteCamera.Value) {
             return;
         }

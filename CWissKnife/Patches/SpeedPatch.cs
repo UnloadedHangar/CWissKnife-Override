@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Reflection;
 using BepInEx.Configuration;
+using Photon.Pun;
 
 [HarmonyPatch(typeof(PlayerController), "Movement")]
 public class SpeedPatch {
@@ -45,8 +46,13 @@ public class SpeedPatch {
                 // load plugin's speed modifier **toggle** value
                 // -> ldsfld    BepInEx.Configuration.ConfigEntry<bool> CWissKnife.Plugin::configToggleSpeedMultiplier
                 yield return new CodeInstruction(OpCodes.Ldsfld, typeof(Plugin).GetField("configToggleSpeedMultiplier", BindingFlags.Static | BindingFlags.Public));
-                // -> callvirt  float BepInEx.Configuration.ConfigEntry<bool>::get_Value()
+                // -> callvirt  bool BepInEx.Configuration.ConfigEntry<bool>::get_Value()
                 yield return new CodeInstruction(OpCodes.Callvirt, typeof(ConfigEntry<bool>).GetProperty("Value").GetGetMethod());
+                // -> brfalse.s  <IL_XXXXX>
+                yield return new CodeInstruction(OpCodes.Brfalse_S, toOriginalSpeedjumpLabel);
+                // Player is host check
+                // -> callvirt static bool Photon.Pun.PhotonNetwork::get_IsMasterClient()
+                yield return new CodeInstruction(OpCodes.Call, typeof(PhotonNetwork).GetProperty("IsMasterClient", BindingFlags.Static | BindingFlags.Public).GetGetMethod());
                 // -> brfalse.s  <IL_XXXXX>
                 yield return new CodeInstruction(OpCodes.Brfalse_S, toOriginalSpeedjumpLabel);
                 // --------------

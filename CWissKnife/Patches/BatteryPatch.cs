@@ -4,6 +4,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Photon.Pun;
 
 [HarmonyPatch]
 public class BatteryPatch {
@@ -28,6 +29,10 @@ public class BatteryPatch {
 
     [HarmonyPrefix]
     static void Prefix(object __instance) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return;
+        }
+
         if (!Plugin.configToggleInfiniteBattery.Value) {
             return;
         }

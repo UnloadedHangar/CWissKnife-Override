@@ -27,5 +27,8 @@
     <Reference Include="Zorro.Settings.Runtime">
       <HintPath>libs\Zorro.Settings.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>libs\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

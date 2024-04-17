@@ -4,6 +4,7 @@ using CWissKnife;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Photon.Pun;
 
 [HarmonyPatch(typeof(PlayerController), "Update")]
 public class NoClipPatch {
@@ -13,7 +14,7 @@ public class NoClipPatch {
     private static bool crouchPressed = false;
     private static BodypartType bodypart;
     static void Prefix(PlayerRagdoll ___ragdoll, Player ___player) {
-        if (!Plugin.configToggleNoclip.Value) {
+        if (!Plugin.configToggleNoclip.Value || !PhotonNetwork.IsMasterClient) {
             if (!wereCollisionsFixed) {
                 foreach (Collider disabledCollider in disabledColliders) {
                     if (disabledCollider != null) {
@@ -49,6 +50,10 @@ public class NoClipPatch {
     }
 
     static void Postfix(PlayerRagdoll ___ragdoll, Player ___player) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return;
         if (jumpPressed) {
@@ -69,6 +74,10 @@ public class NoClipPatch {
 [HarmonyPatch(typeof(PlayerController), "Gravity")]
 public class NoClipPatch2 {
     static bool Prefix(Player ___player) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return true;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return true;
         return false;
@@ -78,6 +87,10 @@ public class NoClipPatch2 {
 [HarmonyPatch(typeof(PlayerController), "ConstantGravity")]
 public class NoClipPatch3 {
     static bool Prefix(Player ___player) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return true;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return true;
         return false;
@@ -87,6 +100,10 @@ public class NoClipPatch3 {
 [HarmonyPatch(typeof(PlayerController), "MovementStateChanges")]
 public class NoClipPatch4 {
     static void Postfix(Player ___player) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return;
         ___player.data.isCrouching = false;
@@ -96,6 +113,10 @@ public class NoClipPatch4 {
 [HarmonyPatch(typeof(PlayerController), "TryJump")]
 public class NoClipPatch5 {
     static bool Prefix(Player ___player) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return true;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return true;
         return false;
@@ -106,6 +127,10 @@ public class NoClipPatch5 {
 [HarmonyPatch(typeof(PlayerRagdoll), "BodyChanged")]
 public class NoClipPatch6 {
     static bool Prefix(Player ___player, List<Rigidbody> ___rigList) {
+        if (!PhotonNetwork.IsMasterClient) {
+            return true;
+        }
+
         if (!Plugin.configToggleNoclip.Value || !___player.data.isLocal)
             return true;
 		for (int i = 0; i < ___rigList.Count; i++)
