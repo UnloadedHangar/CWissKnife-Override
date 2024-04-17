@@ -2,7 +2,7 @@
     "name": "CWissKnife",
     "version_number": "1.0.0",
     "website_url": "https://github.com/FlawTECH/CWissKnife",
-    "description": "\"Cheat\" menu for education purposes or simply to have fun. (Noclip, Speed, Infinite stats, ...)",
+    "description": "Multi-purpose mod menu (Noclip, Speed, Infinite stats, ...) for private games",
     "dependencies": [
         "BepInEx-BepInExPack-5.4.2100",
         "Azumatt-Official_BepInExConfigurationManager-18.3.0"
