@@ -22,13 +22,13 @@
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+      <HintPath>I:\Games\Content.Warning.v1.9.b-OFME\Content Warning\Content Warning_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Zorro.Settings.Runtime">
-      <HintPath>libs\Zorro.Settings.Runtime.dll</HintPath>
+      <HintPath>I:\Games\Content.Warning.v1.9.b-OFME\Content Warning\Content Warning_Data\Managed\Zorro.Settings.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking">
-      <HintPath>libs\PhotonUnityNetworking.dll</HintPath>
+      <HintPath>I:\Games\Content.Warning.v1.9.b-OFME\Content Warning\Content Warning_Data\Managed\PhotonUnityNetworking.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -29,9 +29,9 @@ public class BatteryPatch {
 
     [HarmonyPrefix]
     static void Prefix(object __instance) {
-        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
-            return;
-        }
+    //    if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
+    //        return;
+    //    }
 
         if (!Plugin.configToggleInfiniteBattery.Value) {
             return;

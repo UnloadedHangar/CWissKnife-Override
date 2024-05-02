@@ -5,9 +5,9 @@ using Photon.Pun;
 [HarmonyPatch(typeof(VideoCamera), "Update")]
 public class CameraPatch {
     static void Prefix(VideoInfoEntry ___m_recorderInfoEntry) {
-        if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
-            return;
-        }
+    //    if (!PhotonNetwork.IsMasterClient || MainMenuHandler.SteamLobbyHandler.IsPlayingWithRandoms()) {
+    //        return;
+    //    }
         
         if (!Plugin.configToggleInfiniteCamera.Value) {
             return;
