@@ -11,7 +11,7 @@ This mod includes:
 * Infinite camera recordings
 * God mode (No damage) -- you can still die from going out of bounds or depleting oxygen
 
-> WARNING: This mod shoul work nomatter if you are the host or not.
+> WARNING: This mod should work nomatter if you are the host or not.
 
 Original project repository: [https://github.com/FlawTECH/CWissKnife](https://github.com/FlawTECH/CWissKnife)
 
