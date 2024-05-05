@@ -1,6 +1,6 @@
 # What is this ?
 
-CWissKnife is a multi-purpose mod menu for the game Content Warning, intended to give a better understanding of the game's mechanics (such as for speedrunners) or simply to play around. Don't use in public lobbies and ruin the fun for others (it's disabled anyways).
+CWissKnife is a multi-purpose mod menu for the game Content Warning, intended to give a better understanding of the game's mechanics (such as for speedrunners) or simply to play around. Don't use in public lobbies and ruin the fun for others.
 
 This mod includes:
 * Noclip
@@ -11,9 +11,9 @@ This mod includes:
 * Infinite camera recordings
 * God mode (No damage) -- you can still die from going out of bounds or depleting oxygen
 
-> WARNING: This mod only works on friend only servers, host only. This behavior is **intended**.
+> WARNING: This mod shoul work nomatter if you are the host or not.
 
-Project repository: [https://github.com/FlawTECH/CWissKnife](https://github.com/FlawTECH/CWissKnife)
+Original project repository: [https://github.com/FlawTECH/CWissKnife](https://github.com/FlawTECH/CWissKnife)
 
 ![Menu screenshot](https://github.com/FlawTECH/CWissKnife/raw/main/Screenshot.png)
 
@@ -29,6 +29,3 @@ If you find Noclip too slow, also toggle Speed Multiplier and set it to a higher
 
 # Additional notes
 If you get caught by a creature while in God mode, Noclip / Speed sometimes won't help. I'm currently working on a better Noclip method, which will unstuck the player. In the meantime, you can always disable God mode / Infinite oxygen and wait for your inevitable fate.
-
-# Issues and suggestions
-Don't hesitate to report any issues or suggest new features over on the [project's Github](https://github.com/FlawTECH/CWissKnife). Contributions are welcome too !
